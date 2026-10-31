@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Journal | REAL TRADER{% endblock %}
+{% block content %}
+<div class="page-heading"><div><div class="eyebrow">YOUR RECORDS</div><h1>Trading journal</h1></div><a class="button" href="{{ url_for('new_trade') }}">＋ Add trade</a></div>
+<section class="card">
+{% if trades %}<div class="table-wrap"><table><thead><tr><th>Date</th><th>Symbol</th><th>Side</th><th>Setup</th><th>Entry</th><th>Exit</th><th>Qty</th><th>Gross P&amp;L</th><th>Fees</th><th></th></tr></thead><tbody>
+{% for t in trades %}<tr><td>{{ t.trade_date }}</td><td>{{ t.symbol }}</td><td>{{ t.side }}</td><td>{{ t.setup }}</td><td>{{ t.entry }}</td><td>{{ t.exit_price if t.exit_price is not none else "Open" }}</td><td>{{ t.quantity }}</td><td>{{ t.pnl }}</td><td>{{ t.fees }}</td><td><form method="post" action="{{ url_for('delete_trade', trade_id=t.id) }}" onsubmit="return confirm('Delete this trade?')"><button class="text-button" type="submit">Delete</button></form></td></tr>{% endfor %}
+</tbody></table></div>{% else %}<p class="muted">Your journal is empty. Add a trade to begin.</p>{% endif %}
+</section>
+{% endblock %}

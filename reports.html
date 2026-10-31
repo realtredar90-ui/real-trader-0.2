@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block title %}Reports | REAL TRADER{% endblock %}
+{% block content %}
+<div class="eyebrow">PERFORMANCE REVIEW</div><h1>Reports</h1>
+<section class="stats-grid">
+  <div class="stat-card"><small>Total trades</small><strong>{{ stats.count }}</strong></div>
+  <div class="stat-card"><small>Recorded net P&amp;L</small><strong class="{{ 'positive' if stats.net >= 0 else 'negative' }}">{{ '%.2f'|format(stats.net) }}</strong></div>
+  <div class="stat-card"><small>Win rate</small><strong>{{ stats.win_rate }}%</strong></div>
+  <div class="stat-card"><small>Wins / Losses</small><strong>{{ stats.wins }} / {{ stats.losses }}</strong></div>
+</section>
+<p class="muted">Net P&amp;L is calculated from entered gross P&amp;L minus fees for trades with an exit price. Enter accurate results for useful reports.</p>
+<section class="card"><h2>Review questions</h2><ul class="review-list"><li>Which setup appears most often in your winning trades?</li><li>Are losses related to the setup, execution or breaking a rule?</li><li>Are you following your planned stop loss and target?</li><li>What one process improvement will you test next?</li></ul></section>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}{{ mode }} | REAL TRADER{% endblock %}
+{% block content %}
+<section class="form-card narrow">
+  <div class="eyebrow">REAL TRADER ACCOUNT</div>
+  <h1>{{ mode }}</h1>
+  <form method="post">
+    <label>Username<input name="username" required minlength="3" maxlength="60" autocomplete="username"></label>
+    <label>Password<input name="password" type="password" required minlength="8" autocomplete="{% if mode == 'Login' %}current-password{% else %}new-password{% endif %}"></label>
+    <button class="button full-width" type="submit">{{ mode }}</button>
+  </form>
+  {% if mode == "Login" %}<p class="muted">New here? <a href="{{ url_for('register') }}">Create an account</a></p>
+  {% else %}<p class="muted">Already registered? <a href="{{ url_for('login') }}">Login</a></p>{% endif %}
+</section>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Add Trade | REAL TRADER{% endblock %}
+{% block content %}
+<section class="form-card">
+  <div class="eyebrow">TRADE JOURNAL</div><h1>Record a trade</h1>
+  <form method="post" class="form-grid">
+    <label>Date<input type="date" name="trade_date" required value="{{ request.form.get('trade_date', '') }}"></label>
+    <label>Symbol / Instrument<input name="symbol" placeholder="e.g. XAUUSD, NIFTY" required value="{{ request.form.get('symbol', '') }}"></label>
+    <label>Direction<select name="side"><option>Buy</option><option>Sell</option></select></label>
+    <label>Setup / Strategy<input name="setup" placeholder="e.g. liquidity sweep"></label>
+    <label>Entry price<input type="number" step="any" min="0.000001" name="entry" required></label>
+    <label>Exit price (optional)<input type="number" step="any" min="0" name="exit_price"></label>
+    <label>Stop loss (optional)<input type="number" step="any" name="stop_loss"></label>
+    <label>Target (optional)<input type="number" step="any" name="target"></label>
+    <label>Quantity / Lots<input type="number" step="any" min="0.000001" name="quantity" required value="1"></label>
+    <label>Gross P&amp;L<input type="number" step="any" name="pnl" value="0"></label>
+    <label>Fees / Commission<input type="number" step="any" min="0" name="fees" value="0"></label>
+    <label class="span-two">Notes<textarea name="notes" rows="4" placeholder="Entry reasoning, rule-following, mistakes and lessons..."></textarea></label>
+    <div class="span-two"><button class="button" type="submit">Save trade</button></div>
+  </form>
+</section>
+{% endblock %}

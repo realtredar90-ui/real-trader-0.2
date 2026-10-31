@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}REAL TRADER | Trading Journal{% endblock %}
+{% block content %}
+<section class="hero">
+  <div class="eyebrow">YOUR TRADING. CLEARLY TRACKED.</div>
+  <h1>Make every trade<br><span>count.</span></h1>
+  <p>A focused journal to record entries, exits, risk, results and the thinking behind every trade.</p>
+  <div class="actions"><a class="button" href="{{ url_for('register') }}">Create account</a><a class="button secondary" href="{{ url_for('login') }}">Login</a></div>
+  <p class="disclaimer">A personal record-keeping tool. It does not execute trades or provide investment advice.</p>
+</section>
+<section class="feature-grid">
+  <article class="card"><div class="eyebrow">01 / JOURNAL</div><h3>Capture the details</h3><p>Record instrument, direction, entry, exit, stop loss, target and notes.</p></article>
+  <article class="card"><div class="eyebrow">02 / DASHBOARD</div><h3>See your progress</h3><p>Review trade count, closed trades and recorded net profit or loss.</p></article>
+  <article class="card"><div class="eyebrow">03 / REPORTS</div><h3>Learn from results</h3><p>Review wins, losses and win rate from the records you enter.</p></article>
+</section>
+{% endblock %}
